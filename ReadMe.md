@@ -1,4 +1,8 @@
-﻿**Nord Account Checker 🛡️**
+NOTE: THIS IS STILL IN PRODUCTION AND IM ONLY TESTING THIS!! FOR ANY ISSUES/SUGGESTIONS DM ME ON DC @ sfgy
+ 
+ 
+ 
+ **Nord Account Checker 🛡️**
 
 **Notice:**
 
